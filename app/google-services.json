@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "380136198114",
+    "project_id": "mad-lab-exam",
+    "storage_bucket": "mad-lab-exam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380136198114:android:0017d9aaa61d957a8f73bb",
+        "android_client_info": {
+          "package_name": "com.example.mad_lab_exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380136198114-mc7okpr7aano7mikipnt0t44hf5uil0d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI9aXqBI4jZzLj9ZwmLyJrFFPaWDCfGwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380136198114-mc7okpr7aano7mikipnt0t44hf5uil0d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
