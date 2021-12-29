@@ -43,6 +43,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        _firebase.setOnClickListener{
+            val intent = Intent(this, Firebase::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun navigate() {

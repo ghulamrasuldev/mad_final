@@ -25,7 +25,7 @@ class Firebase : AppCompatActivity() {
         }
 
         _btn_search.setOnClickListener{
-            searchDataBase()
+            searchDataBase(_username_search.text.toString())
         }
     }
 
@@ -36,10 +36,15 @@ class Firebase : AppCompatActivity() {
         if (etEmail.isNotEmpty() && etUserName.isNotEmpty()
             && etPassword.isNotEmpty()) {
             //Validation Rules
-            //Checking Email
             auth.createUserWithEmailAndPassword(etEmail, etPassword)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        Toast.makeText(
+                            baseContext,
+                            "Account Created Successfully! You can now search username" + (task.getException()?.message
+                                ?: ""),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
                         Log.d(TAG, "Saving data to FireStore")
@@ -52,7 +57,7 @@ class Firebase : AppCompatActivity() {
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
                         Toast.makeText(
                             baseContext,
-                            "AUTHENTICATION_FAILED_ERROR" + (task.getException()?.message
+                            "Authentication Failed" + (task.getException()?.message
                                 ?: ""),
                             Toast.LENGTH_SHORT
                         ).show()
@@ -60,7 +65,7 @@ class Firebase : AppCompatActivity() {
                 }
 
         } else {
-            Toast.makeText(this, "EMPTY_FIELDS_ERROR", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Some Empty Fields", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -73,7 +78,7 @@ class Firebase : AppCompatActivity() {
             Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             Toast.makeText(
                 baseContext,
-                "Account Created, You can search a username.",
+                "User added to Database!",
                 Toast.LENGTH_SHORT
             ).show()
         }.addOnFailureListener { e ->
@@ -86,7 +91,23 @@ class Firebase : AppCompatActivity() {
         }
     }
 
-    fun searchDataBase(){
-
+    fun searchDataBase(username: String){
+        db.collection("users")
+            .whereEqualTo("username", username)
+            .get()
+            .addOnSuccessListener{
+                Toast.makeText(
+                    baseContext,
+                    "User Found in Database!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .addOnFailureListener{
+                Toast.makeText(
+                    baseContext,
+                    "User Not Found in Database!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
     }
 }
