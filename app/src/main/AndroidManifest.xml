@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MAD_LAB_EXAM">
         <activity
+            android:name=".Firebase"
+            android:exported="true" />
+        <activity
+            android:name=".df"
+            android:exported="true" />
+        <activity
+            android:name=".EcommercePage"
+            android:exported="true" />
+        <activity
             android:name=".ChapterActivity"
             android:exported="true" />
         <activity
