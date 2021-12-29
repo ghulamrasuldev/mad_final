@@ -95,17 +95,30 @@ class Firebase : AppCompatActivity() {
         db.collection("users")
             .whereEqualTo("username", username)
             .get()
-            .addOnSuccessListener{
-                Toast.makeText(
-                    baseContext,
-                    "User Found in Database!",
-                    Toast.LENGTH_SHORT
-                ).show()
+            .addOnSuccessListener{documents->
+                var regisetered = false
+                for (document in documents){
+                    if (document.data["username"].toString() == username){
+                        regisetered =true
+                        Toast.makeText(
+                            baseContext,
+                            "User Found in Database!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                if (regisetered == false){
+                    Toast.makeText(
+                        baseContext,
+                        "User Not Found in Database!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
             .addOnFailureListener{
                 Toast.makeText(
                     baseContext,
-                    "User Not Found in Database!",
+                    "Unexpected Error!",
                     Toast.LENGTH_SHORT
                 ).show()
             }
