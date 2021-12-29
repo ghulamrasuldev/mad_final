@@ -1,13 +1,17 @@
 package com.example.mad_lab_exam.Adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mad_lab_exam.BookItem
 import com.example.mad_lab_exam.R
+import com.example.mad_lab_exam.CellClickListener
+import com.example.mad_lab_exam.ReadBookActivity
 
 class BookAdapter (private val book_list: List<BookItem>):
     RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
